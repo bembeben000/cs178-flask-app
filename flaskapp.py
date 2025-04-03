@@ -25,7 +25,7 @@ def add_user():
         # For now, let's just print it to the console
         print("Name:", name, ":", "Favorite Genre:", genre)
         
-        flash('User added successfully!', 'success')  # 'success' is a category; makes a green banner at the top
+        flash('User added successfully! Yay!', 'success')  # 'success' is a category; makes a green banner at the top
         # Redirect to home page or another page upon successful submission
         return redirect(url_for('home'))
     else:
@@ -40,6 +40,14 @@ def display_users():
     users_list = (('John','Doe','Comedy'),('Jane', 'Doe','Drama'))
     return render_template('display_users.html', users = users_list)
 
+@app.route('/delete-user', methods=['GET', 'POST'])
+def delete_user():
+    if request.method == 'POST':
+        user_id = request.form['user_id']  # Placeholder for real user identification
+        print("Deleted User ID:", user_id)
+        flash('User deleted successfully!', 'warning')
+        return redirect(url_for('home'))
+    return render_template('delete_user.html')
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
