@@ -43,8 +43,7 @@ def display_users():
 @app.route('/delete-user', methods=['GET', 'POST'])
 def delete_user():
     if request.method == 'POST':
-        user_id = request.form['user_id']  # Placeholder for real user identification
-        print("Deleted User ID:", user_id)
+        name = request.form['name']
         flash('User deleted successfully!', 'warning')
         return redirect(url_for('home'))
     return render_template('delete_user.html')
